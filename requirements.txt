@@ -1,0 +1,50 @@
+# ═══════════════════════════════════════════════════════════════════
+# InSilico Twin - Python Dependencies
+# Platform: Multi-Scale Virtual Clinical Trial
+# Python: 3.10 or 3.11 (3.12 not tested)
+# ═══════════════════════════════════════════════════════════════════
+
+# ─── Core Numerical Stack ───
+numpy==1.26.4              # Locked for SDV compatibility (DO NOT upgrade to 2.x)
+pandas==2.1.4              # Data manipulation
+scipy==1.11.4              # Statistical analysis (t-tests, effect sizes)
+
+# ─── Web Framework ───
+streamlit==1.30.0          # Main UI framework
+
+# ─── Biosimulation ───
+tellurium==2.2.10          # Systems biology simulation (includes libroadrunner)
+
+# ─── Synthetic Data Generation ───
+sdv==1.10.0                # Synthetic Data Vault (Gaussian Copula)
+
+# ─── Visualization ───
+plotly==5.18.0             # Interactive charts
+matplotlib==3.8.2          # Static publication-grade plots
+seaborn==0.13.1            # Statistical visualization helpers
+
+# ─── Optional (for enhanced features) ───
+# scikit-learn==1.4.0      # ML utilities (if adding predictive features)
+# openpyxl==3.1.2          # Excel export (if adding XLSX downloads)
+
+# ═══════════════════════════════════════════════════════════════════
+# Installation Notes:
+# ═══════════════════════════════════════════════════════════════════
+#
+# Standard install:
+#   pip install -r requirements.txt
+#
+# If NumPy conflict errors occur:
+#   pip install 'numpy<2.0' --force-reinstall
+#   pip install -r requirements.txt
+#
+# Linux ARM (Raspberry Pi, AWS Graviton):
+#   sudo apt-get install build-essential cmake libxml2-dev
+#   pip install -r requirements.txt
+#
+# Conda users:
+#   conda create -n insilico python=3.10
+#   conda activate insilico
+#   pip install -r requirements.txt
+#
+# ═══════════════════════════════════════════════════════════════════
