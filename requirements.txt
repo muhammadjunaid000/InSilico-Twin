@@ -1,50 +1,28 @@
 # ═══════════════════════════════════════════════════════════════════
-# InSilico Twin - Python Dependencies
-# Platform: Multi-Scale Virtual Clinical Trial
-# Python: 3.10 or 3.11 (3.12 not tested)
+# InSilico Twin - Verified Deployment Dependencies
 # ═══════════════════════════════════════════════════════════════════
 
-# ─── Core Numerical Stack ───
-numpy==1.26.4              # Locked for SDV compatibility (DO NOT upgrade to 2.x)
-pandas==2.1.4              # Data manipulation
-scipy==1.11.4              # Statistical analysis (t-tests, effect sizes)
+# 1. Core Platform
+python_version==3.10.* # Force Python 3.10 (Most stable for bio-sim)
+streamlit==1.32.0               # UI Framework
 
-# ─── Web Framework ───
-streamlit==1.30.0          # Main UI framework
+# 2. The "Bridge" - Use slightly older versions to ensure compatibility
+numpy==1.24.3                   # <--- CRITICAL: Numpy 1.24 works with BOTH Tellurium & SDV
+pandas==2.0.3                   # Compatible with SDV 1.4+
+scipy==1.10.1                   # Compatible with Tellurium
 
-# ─── Biosimulation ───
-tellurium==2.2.10          # Systems biology simulation (includes libroadrunner)
+# 3. Bio-Simulation Engine
+# We pin specific older versions that don't demand Numpy 2.0
+tellurium==2.2.8                
+libroadrunner==2.4.0            # Explicitly pin the backend engine
 
-# ─── Synthetic Data Generation ───
-sdv==1.10.0                # Synthetic Data Vault (Gaussian Copula)
+# 4. AI / Synthetic Data
+sdv==1.4.0                      # Stable version compatible with Numpy 1.24
 
-# ─── Visualization ───
-plotly==5.18.0             # Interactive charts
-matplotlib==3.8.2          # Static publication-grade plots
-seaborn==0.13.1            # Statistical visualization helpers
+# 5. Visualization
+plotly==5.19.0
+matplotlib==3.7.1
+seaborn==0.12.2
 
-# ─── Optional (for enhanced features) ───
-# scikit-learn==1.4.0      # ML utilities (if adding predictive features)
-# openpyxl==3.1.2          # Excel export (if adding XLSX downloads)
-
-# ═══════════════════════════════════════════════════════════════════
-# Installation Notes:
-# ═══════════════════════════════════════════════════════════════════
-#
-# Standard install:
-#   pip install -r requirements.txt
-#
-# If NumPy conflict errors occur:
-#   pip install 'numpy<2.0' --force-reinstall
-#   pip install -r requirements.txt
-#
-# Linux ARM (Raspberry Pi, AWS Graviton):
-#   sudo apt-get install build-essential cmake libxml2-dev
-#   pip install -r requirements.txt
-#
-# Conda users:
-#   conda create -n insilico python=3.10
-#   conda activate insilico
-#   pip install -r requirements.txt
-#
-# ═══════════════════════════════════════════════════════════════════
+# 6. Utilities
+openpyxl==3.1.2                 # For Excel export if needed
